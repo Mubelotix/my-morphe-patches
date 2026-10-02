@@ -86,33 +86,6 @@
       "options": []
     },
     {
-      "name": "Add ad system logging",
-      "description": "Logs full ad request and event data to logcat with tag SpotifyAds for reverse engineering.",
-      "default": true,
-      "category": null,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.spotify.music",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "9.1.62.1601",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
       "name": "Disable ads",
       "description": null,
       "default": true,
@@ -344,33 +317,6 @@
           "values": null
         }
       ]
-    },
-    {
-      "name": "Spoof APK signature",
-      "description": "Intercepts all PackageManager calls returning cert info for Spotify.",
-      "default": true,
-      "category": null,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.spotify.music",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "9.1.62.1601",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
     }
   ]
 }

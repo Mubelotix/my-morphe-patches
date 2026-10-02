@@ -13,7 +13,6 @@ Custom Android app patches by Mubelotix, built for [Morphe](https://morphe.softw
 - [Sudoku.com](https://play.google.com/store/apps/details?id=com.easybrain.sudoku.android&hl=en_US) - Sudokus without ads.
 - [MyAstuce](https://play.google.com/store/apps/details?id=fr.cityway.android.creaastuce) - Public transit app for Rouen. Patched to allow ticket validation without an internet connection, for users who travel in areas with poor network coverage.
 - [Pinterest](https://play.google.com/store/apps/details?id=com.pinterest) - Remove ads and promoted content.
-- [Spotify](https://play.google.com/store/apps/details?id=com.spotify.music) - experimental patching and instrumentation.
 
 ## Add the patches to Morphe
 
