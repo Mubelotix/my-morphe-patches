@@ -1,5 +1,11 @@
 [versions]
-revanced-patcher = "22.0.0"
-# Tracking https://github.com/google/smali/issues/64.
+morphe-patcher = "1.15.0"
 #noinspection GradleDependency
-smali = "3.0.5"
+smali = "d92701d947"
+gson = "2.14.0"
+
+[libraries]
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+# Gradle plugin adds the dependency during build; this declaration allows Dependabot to update it.
+#noinspection UnusedVersionCatalogEntry
+morphe-patcher = { module = "app.morphe:morphe-patcher", version.ref = "morphe-patcher" }

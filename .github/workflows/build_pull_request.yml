@@ -5,6 +5,7 @@ on:
   pull_request:
     branches:
       - dev
+      - main
 
 jobs:
   release:
@@ -20,7 +21,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: "temurin"
-          java-version: "17"
+          java-version: "21"
 
       - name: Cache Gradle
         uses: burrunan/gradle-cache-action@v2
@@ -28,4 +29,4 @@ jobs:
       - name: Build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew build --no-daemon
+        run: ./gradlew :patches:buildAndroid clean --no-daemon

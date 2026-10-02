@@ -1,126 +1,34 @@
-<p align="center">
-  <picture>
-    <source
-      width="256px"
-      media="(prefers-color-scheme: dark)"
-      srcset="assets/revanced-headline/revanced-headline-vertical-dark.svg"
-    >
-    <img 
-      width="256px"
-      src="assets/revanced-headline/revanced-headline-vertical-light.svg"
-    >
-  </picture>
-  <br>
-   <a style="text-decoration: none" href="https://revanced.app/">
-      <picture>
-          <source height="24px" media="(prefers-color-scheme: dark)" srcset="assets/revanced-logo/revanced-logo.svg" />
-          <img height="24px" src="assets/revanced-logo/revanced-logo.svg" />
-      </picture>
-    </a>&nbsp;&nbsp;&nbsp;
-    <a style="text-decoration: none" href="https://github.com/ReVanced">
-        <picture>
-            <source height="24px" media="(prefers-color-scheme: dark)" srcset="https://i.ibb.co/dMMmCrW/Git-Hub-Mark.png" />
-            <img height="24px" src="https://i.ibb.co/9wV3HGF/Git-Hub-Mark-Light.png" />
-        </picture>
-    </a>&nbsp;&nbsp;&nbsp;
-    <a style="text-decoration: none" href="http://revanced.app/discord">
-        <picture>
-            <source height="24px" media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/13122796/178032563-d4e084b7-244e-4358-af50-26bde6dd4996.png" />
-            <img height="24px" src="https://user-images.githubusercontent.com/13122796/178032563-d4e084b7-244e-4358-af50-26bde6dd4996.png" />
-        </picture>
-    </a>&nbsp;&nbsp;&nbsp;
-    <a style="text-decoration: none" href="https://lemmy.world/c/revanced">
-        <picture>
-            <source height="24px" media="(prefers-color-scheme: dark)" srcset="https://join-lemmy.org/static/assets/images/lemmy.svg" />
-            <img height="24px" src="https://join-lemmy.org/static/assets/images/lemmy.svg" />
-        </picture>
-    </a>&nbsp;&nbsp;&nbsp;
-    <a style="text-decoration: none" href="https://t.me/app_revanced">
-       <picture>
-          <source height="24px" media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/13122796/178032213-faf25ab8-0bc3-4a94-a730-b524c96df124.png" />
-          <img height="24px" src="https://user-images.githubusercontent.com/13122796/178032213-faf25ab8-0bc3-4a94-a730-b524c96df124.png" />
-       </picture>
-    </a>&nbsp;&nbsp;&nbsp;
-    <a style="text-decoration: none" href="https://www.youtube.com/@ReVanced">
-      <picture>
-         <source height="24px" media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/13122796/178032714-c51c7492-0666-44ac-99c2-f003a695ab50.png" />
-         <img height="24px" src="https://user-images.githubusercontent.com/13122796/178032714-c51c7492-0666-44ac-99c2-f003a695ab50.png" />
-     </picture>
-   </a>
-   <br>
-   <br>
-   Continuing the legacy of Vanced
-</p>
+# Mubelotix's Patches
 
-# 👋🧩 Mubelotix's ReVanced Patches
+Custom Android app patches by Mubelotix, built for [Morphe](https://morphe.software). This repository includes patches for apps I use and a reusable toolkit for injecting JavaScript into React Native apps, including a live WebSocket REPL.
 
-This repository holds my custom patches for apps that I use. It takes advantage of the amazing modding framework that is [ReVanced](https://github.com/ReVanced).
+## Supported apps
 
-This repository also features a **groundbreaking toolkit** for injecting arbitrary JavaScript code into **any React Native app** via ReVanced patches. It includes a live WebSocket REPL, allowing you to inspect, modify, and hook into the app's runtime on the fly[^1]! 🚀✨
+- [Reddit](https://play.google.com/store/apps/details?id=com.reddit.frontpage) — route Reddit through the [Reddit-to-Lemmy compatibility layer](https://github.com/Mubelotix/reddit-to-lemmy).
+- [Jakdojade](https://play.google.com/store/apps/details?id=com.citynav.jakdojade.pl.android) — remove ads and enable premium features.
+- [French Tarot Score Counter](https://play.google.com/store/apps/details?id=net.aasuited.tarotscore) — remove ads.
+- [Score Counter](https://play.google.com/store/apps/details?id=net.aasuited.universalscoretracker) — remove ads.
+- [Picolo](https://play.google.com/store/apps/details?id=com.picolo.android) — enable premium features.
+- [Truth or Dare](https://play.google.com/store/apps/details?id=com.antoinehabert.truthordaregame) — enable premium features.
+- [Sudoku.com](https://play.google.com/store/apps/details?id=com.easybrain.sudoku.android) — remove ads.
+- [MyAstuce](https://play.google.com/store/apps/details?id=fr.cityway.android.creaastuce) — allow ticket validation while offline.
+- [Pinterest](https://play.google.com/store/apps/details?id=com.pinterest) — remove ads and promoted content.
+- [Spotify](https://play.google.com/store/apps/details?id=com.spotify.music) — experimental patching and instrumentation.
 
-## 📚 Supported Apps
+## Add the patches to Morphe
 
-Here is the list of modded apps that I have created patches for:
+Use the Morphe Manager source link:
 
-- [Reddit](https://play.google.com/store/apps/details?id=com.reddit.frontpage) - The official Reddit app turned into a Lemmy client. Also see the [compatibility layer](https://github.com/Mubelotix/reddit-to-lemmy).
-- [Jakdojade](https://play.google.com/store/apps/details?id=com.citynav.jakdojade.pl.android) - A public transport app for Poland. Patched to remove ads.
-- [French Tarot Score Counter](https://play.google.com/store/apps/details?id=net.aasuited.tarotscore) - A point counter for the French Tarot card game. Patched to remove ads.
-- [Score Counter](https://play.google.com/store/apps/details?id=net.aasuited.universalscoretracker) - A simple point counter for any game. Patched to remove ads.
-- [Picolo](https://play.google.com/store/apps/details?id=com.picolo.android&hl=en_US) - The drinking game patched to activate premium features for free.
-- [Truth or Dare](https://play.google.com/store/apps/details?id=com.antoinehabert.truthordaregame) - The party game patched to activate premium features.
-- [Sudoku.com](https://play.google.com/store/apps/details?id=com.easybrain.sudoku.android&hl=en_US) - Sudokus without ads
-- [MyAstuce](https://play.google.com/store/apps/details?id=fr.cityway.android.creaastuce) - Public transit app for Rouen. Patched to allow ticket validation without an internet connection, for users who travel in areas with poor network coverage.
-- [Pinterest](https://play.google.com/store/apps/details?id=com.pinterest) - Remove ads and promoted content.
+<https://morphe.software/add-source?github=Mubelotix/my-revanced-patches>
 
+Releases publish Morphe patch bundles (`.mpp`) and source metadata. For local development, build with `./gradlew buildAndroid`; the bundle is written to `patches/build/libs/` and can be applied using [Morphe Desktop](https://github.com/MorpheApp/morphe-desktop).
 
-## 📲 Installation
+## Development
 
-You can use these patches either directly on your Android device via [ReVanced Manager](https://github.com/revanced/revanced-manager), or on your computer using [ReVanced CLI](https://github.com/revanced/revanced-cli).
+See [CONTRIBUTING.md](CONTRIBUTING.md) for patch development and reverse-engineering notes. The project follows the [Morphe patcher development guide](https://github.com/MorpheApp/morphe-documentation/tree/main/docs/morphe-development).
 
-### Option 1: ReVanced Manager (Recommended)
+Release automation runs on pushes to `main` and can also be started manually. Use conventional commit messages (`feat:`, `fix:`, `perf:`, `bump:`); release artifacts are generated by semantic-release rather than uploaded manually.
 
-1. Open **ReVanced Manager** and go to **Patches**.
-2. Tap the **Pen** floating action button in the bottom right.
-3. Select **"+ Add Patches"**.
-4. Choose **"Enter URL"** when prompted.
-5. Paste the following source URL:
-   ```
-   https://raw.githubusercontent.com/Mubelotix/my-revanced-patches/main/patches.json
-   ```
-6. Turn on **Auto-update** and tap **Add**.
+## License and attribution
 
-ReVanced Manager will now fetch the updates and display **"Mubelotix's ReVanced Patches"** as a source on your patching screen.
-
-### Option 2: ReVanced CLI
-
-If you prefer using the command-line:
-
-1. Download the latest compiled `patches.rvp` from the [Releases](https://github.com/Mubelotix/my-revanced-patches/releases) page.
-2. Apply the patches using `revanced-cli` (bypassing signature verification with `-b`):
-   ```bash
-   java -jar revanced-cli.jar patch -p patches.rvp -b -a input.apk
-   ```
-
-
-## ❓ Everything else
-
-### 📙 Contributing
-
-Thank you for considering contributing to ReVanced Patches template.  
-You can find the contribution guidelines [here](CONTRIBUTING.md).
-
-### 🛠️ Building
-
-To build ReVanced Patches template,
-you can follow the [ReVanced documentation](https://github.com/ReVanced/revanced-documentation).
-
-## 📜 Licence
-
-ReVanced Patches template is licensed under the GPLv3 licence.
-Please see the [license file](LICENSE) for more information.
-[tl;dr](https://www.tldrlegal.com/license/gnu-general-public-license-v3-gpl-3) you may copy, distribute
-and modify ReVanced Patches template as long as you track changes/dates in source files.
-Any modifications to ReVanced Patches template must also be made available under the GPL,
-along with build & install instructions.
-
-[^1]: You will find documentation for using the React Native REPL patch [in CONTRIBUTING.md](https://github.com/Mubelotix/my-revanced-patches/blob/main/CONTRIBUTING.md#react-native-repl).
+This project is licensed under [GPLv3](LICENSE). Some patches derive from ReVanced work; their original notices and history are retained. The project is independently maintained and is not an official Morphe project. See [NOTICE](NOTICE) for Morphe’s derivative-work naming conditions.

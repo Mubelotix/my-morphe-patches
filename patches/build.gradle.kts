@@ -1,23 +1,14 @@
-group = "app.revanced"
+group = "app.mubelotix"
 
 patches {
     about {
-        name = "Mubelotix's ReVanced Patches"
-        description = "Custom patches by Mubelotix"
-        source = "git@github.com:Mubelotix/my-revanced-patches.git"
+        name = "Mubelotix's Patches"
+        description = "Custom patches by Mubelotix, compatible with Morphe"
+        source = "https://github.com/Mubelotix/my-revanced-patches"
         author = "Mubelotix"
         contact = "https://github.com/Mubelotix"
         website = "https://github.com/Mubelotix/my-revanced-patches"
-        license = "GNU General Public License v3.0"
-    }
-}
-
-kotlin {
-    compilerOptions {
-        freeCompilerArgs = listOf(
-            "-Xexplicit-backing-fields",
-            "-Xcontext-parameters"
-        )
+        license = "GPLv3"
     }
 }
 
@@ -27,10 +18,27 @@ sourceSets {
             srcDir("src/main/kotlin")
             include("**/*.js")
             include("**/*.py")
+            include("**/*.mpe")
         }
     }
 }
 
-tasks.withType<Jar>().configureEach {
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+val patchListGeneratorClasspath = configurations.create("patchListGeneratorClasspath")
+
+dependencies {
+    compileOnly(libs.gson)
+    patchListGeneratorClasspath(libs.gson)
+}
+
+tasks {
+    register<JavaExec>("generatePatchesList") {
+        description = "Build patch list metadata"
+        dependsOn(build)
+        classpath = sourceSets["main"].runtimeClasspath + patchListGeneratorClasspath
+        mainClass.set("util.PatchListGeneratorKt")
+    }
+
+    publish {
+        dependsOn("generatePatchesList")
+    }
 }

@@ -1,6 +1,6 @@
 package app.revanced.patches.picolo
 
-import app.revanced.patcher.patch.rawResourcePatch
+import app.morphe.patcher.patch.rawResourcePatch
 
 @Suppress("unused")
 val premiumPatch = rawResourcePatch(

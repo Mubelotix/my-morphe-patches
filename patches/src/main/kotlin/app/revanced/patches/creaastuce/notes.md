@@ -124,24 +124,14 @@ stored offer acceptance date is stale/in the past. The PASS check at line 1194 u
 
 ---
 
-## Build & Apply
+## Build & Apply with Morphe
 
 ```bash
-# Build patches
-ANDROID_HOME=/tmp/android-sdk ./gradlew :patches:jar
+# Build the Morphe patch bundle
+./gradlew buildAndroid
 
-# Copy output
-cp patches/build/libs/patches-1.0.4.rvp patches.rvp
-
-# Apply to APK
-java -jar revanced-cli.jar patch \
-    --exclusive \
-    -e "Offline Validation Fix" \
-    -p patches.rvp \
-    -o patched.apk \
-    full.apk
-
-# Install
+# Apply patches/build/libs/patches-*.mpp to full.apk with Morphe Desktop.
+# Select "Offline Validation Fix", then install the resulting APK:
 adb install -r patched.apk
 ```
 

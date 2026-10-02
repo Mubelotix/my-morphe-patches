@@ -1,7 +1,7 @@
 package app.revanced.patches.reactrepl
 
-import app.revanced.patcher.patch.bytecodePatch
-import app.revanced.patcher.patch.stringOption
+import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.stringOption
 import app.revanced.util.reactnative.reactNativePatch
 
 @Suppress("unused")
@@ -11,7 +11,7 @@ private object ReplResources
 val replPatch = bytecodePatch(
     name = "React Native REPL",
     description = "Adds a REPL inside the VM of any React Native app for you to dig into",
-    use = false,
+    default = false,
 ) {
     val ws_server = stringOption(key = "ws_server", required = true)
 

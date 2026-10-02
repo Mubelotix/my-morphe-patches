@@ -1,20 +1,18 @@
 package app.revanced.util
 
-import app.revanced.patcher.FingerprintBuilder
-import app.revanced.patcher.extensions.InstructionExtensions.addInstruction
-import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
-import app.revanced.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
-import app.revanced.patcher.extensions.InstructionExtensions.instructions
-import app.revanced.patcher.extensions.InstructionExtensions.removeInstruction
-import app.revanced.patcher.patch.BytecodePatchContext
-import app.revanced.patcher.patch.PatchException
-import app.revanced.patcher.util.proxy.mutableTypes.MutableClass
-import app.revanced.patcher.util.proxy.mutableTypes.MutableMethod
-// import app.revanced.patches.shared.misc.mapping.get
-// import app.revanced.patches.shared.misc.mapping.resourceMappingPatch
-// import app.revanced.patches.shared.misc.mapping.resourceMappings
+import app.morphe.patcher.FingerprintBuilder
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.instructions
+import app.morphe.patcher.extensions.InstructionExtensions.removeInstruction
+import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.PatchException
+import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.ClassDef
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.Instruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -191,8 +189,8 @@ fun BytecodePatchContext.traverseClassHierarchy(targetClass: MutableClass, callb
 
     targetClass.superclass ?: return
 
-    classBy { targetClass.superclass == it.type }?.mutableClass?.let {
-        traverseClassHierarchy(it, callback)
+    classDefByOrNull { targetClass.superclass == it.type }?.let { superClass ->
+        traverseClassHierarchy(mutableClassDefBy(superClass), callback)
     }
 }
 
@@ -423,13 +421,13 @@ fun BytecodePatchContext.forEachLiteralValueInstruction(
     literal: Long,
     block: MutableMethod.(literalInstructionIndex: Int) -> Unit,
 ) {
-    classes.forEach { classDef ->
+    classDefForEach { classDef ->
         classDef.methods.forEach { method ->
             method.implementation?.instructions?.forEachIndexed { index, instruction ->
                 if (instruction.opcode == Opcode.CONST &&
                     (instruction as WideLiteralInstruction).wideLiteral == literal
                 ) {
-                    val mutableMethod = proxy(classDef).mutableClass.findMutableMethodOf(method)
+                    val mutableMethod = mutableClassDefBy(classDef).findMutableMethodOf(method)
                     block.invoke(mutableMethod, index)
                 }
             }
@@ -489,5 +487,28 @@ fun MutableMethod.returnEarlyString(value: String = "") {
 fun FingerprintBuilder.literal(literalSupplier: () -> Long) {
     custom { method, _ ->
         method.containsLiteralInstruction(literalSupplier())
+    }
+}
+
+fun <T> BytecodePatchContext.forEachInstructionAsSequence(
+    match: (ClassDef, Method, Instruction, Int) -> T?,
+    transform: (MutableMethod, T) -> Unit
+) {
+    val matchedMethods = mutableListOf<Triple<com.android.tools.smali.dexlib2.iface.ClassDef, Method, List<T>>>()
+    classDefForEach { classDef ->
+        classDef.methods.forEach { method ->
+            val implementation = method.implementation ?: return@forEach
+            val matches = implementation.instructions.mapIndexedNotNull { index, instruction ->
+                match(classDef, method, instruction, index)
+            }
+
+            if (matches.isNotEmpty()) matchedMethods += Triple(classDef, method, matches)
+        }
+    }
+    matchedMethods.forEach { (classDef, method, matches) ->
+        val mutableMethod = mutableClassDefBy(classDef).findMutableMethodOf(method)
+        val matchesQueue = matches.toCollection(ArrayDeque())
+
+        while (!matchesQueue.isEmpty()) transform(mutableMethod, matchesQueue.removeLast())
     }
 }

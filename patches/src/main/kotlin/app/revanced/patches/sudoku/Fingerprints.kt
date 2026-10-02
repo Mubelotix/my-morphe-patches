@@ -2,7 +2,7 @@ package app.revanced.patches.sudoku
 
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.AccessFlags
-import app.revanced.patcher.fingerprint
+import app.morphe.patcher.fingerprint
 
 internal val initAdsFingerprint = fingerprint {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)

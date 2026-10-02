@@ -1,9 +1,9 @@
 package app.revanced.patches.creaastuce
 
-import app.revanced.patcher.patch.bytecodePatch
-import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
-import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
-import app.revanced.patcher.extensions.InstructionExtensions.removeInstruction
+import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.removeInstruction
 import app.revanced.util.indexOfFirstInstructionOrThrow
 import app.revanced.util.indexOfFirstInstructionReversedOrThrow
 import app.revanced.util.returnEarly
@@ -24,17 +24,17 @@ val offlineValidationPatch = bytecodePatch(
 
     execute {
         // 1. Bypass offline validation constraint checks
-        val uw2Class = classes.find { it.type == "Luw2;" }
+        val uw2Class = classDefByOrNull("Luw2;")
             ?: throw Exception("uw2 class not found")
-        val mutableUw2 = proxy(uw2Class).mutableClass
+        val mutableUw2 = mutableClassDefBy(uw2Class)
         mutableUw2.methods.find { it.name == "hasAlreadyOfflineValidation" }!!.returnEarly(false)
         mutableUw2.methods.find { it.name == "isTickerNumberValid" }!!.returnEarly(true)
         mutableUw2.methods.find { it.name == "isUserSolvent" }!!.returnEarly(true)
 
         // 2. Fix offline ongoing tab display (WA0.f)
-        val wa0Class = classes.find { it.type == "LWA0;" }
+        val wa0Class = classDefByOrNull("LWA0;")
             ?: throw Exception("WA0 class not found")
-        val fMethod = proxy(wa0Class).mutableClass.methods.find { it.name == "f" }
+        val fMethod = mutableClassDefBy(wa0Class).methods.find { it.name == "f" }
             ?: throw Exception("f method not found")
 
         // Extract live registers from existing code — survives method body changes
@@ -82,9 +82,9 @@ val offlineValidationPatch = bytecodePatch(
         )
 
         // 3. Fix validation expiry in Lw2.g()
-        val lw2Class = classes.find { it.type == "LLw2;" }
+        val lw2Class = classDefByOrNull("LLw2;")
             ?: throw Exception("Lw2 class not found")
-        val gMethod = proxy(lw2Class).mutableClass.methods.find { it.name == "g" }
+        val gMethod = mutableClassDefBy(lw2Class).methods.find { it.name == "g" }
             ?: throw Exception("g method not found")
 
         // 3a. Override duration: insert const v6, 0x15180 (86400s = 24h) before calculateEndDate

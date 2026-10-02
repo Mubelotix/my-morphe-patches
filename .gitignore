@@ -138,3 +138,7 @@ patches.rvp
 local.properties
 patched-test-temporary-files/
 patched-test.keystore
+
+# BEGIN oh-my-opencode-slim clonedeps
+.slim/clonedeps/repos/
+# END oh-my-opencode-slim clonedeps

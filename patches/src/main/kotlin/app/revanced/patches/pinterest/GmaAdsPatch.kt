@@ -1,6 +1,6 @@
 package app.revanced.patches.pinterest
 
-import app.revanced.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.bytecodePatch
 import app.revanced.util.returnEarly
 
 val gmaAdsPatch = bytecodePatch(

@@ -1,6 +1,6 @@
 # Contributing
 
-In addition to the [Revanced documentation](https://github.com/ReVanced/revanced-documentation), here is a list of tools and commands that can help you with development on this project.
+In addition to the [Morphe patcher documentation](https://github.com/MorpheApp/morphe-patcher/tree/main/docs), this guide lists tools and commands that help with development on this project.
 
 Revanced can be hard to dig into. If you have any questions, feel free to contact me on Discord or Signal (`@mubelotix`) or by email (`mubelotix@gmail.com`).
 
@@ -37,14 +37,7 @@ If it gets incredibly slow, increase RAM allocation and start again.
 
 ### Setup
 
-```bash
-cd /tmp
-sudo apt install sdkmanager
-cp -r /usr/lib/android-sdk/ android-sdk
-sudo chown -R $USER:$USER android-sdk
-export ANDROID_HOME=/tmp/android-sdk
-sdkmanager --licenses
-```
+Install Android Studio or the Android SDK command-line tools and accept the SDK licenses. Configure `ANDROID_HOME` or `sdk.dir` in the untracked `local.properties` file.
 
 ### Writing a new patch
 
@@ -72,35 +65,12 @@ The goal is that someone (including future you) can pick up `notes.md` and under
 ### Building
 
 ```bash
-./gradlew build
-jar cf patches.rvp -C patches/build/classes/kotlin/main . -C patches/build/resources/main .
+./gradlew buildAndroid
 ```
 
 ### Running
 
-```bash
-java -jar revanced-cli.jar list-patches \
-    --with-descriptions=true \
-    --with-versions=true \
-    --filter-package-name=com.instagram.android \
-    patches.rvp
-
-java -jar revanced-cli.jar patch \
-    --patches patches.rvp \
-    --out patched.apk \
-    app.apk
-
-java -jar revanced-cli.jar patch \
-    --patches patches.rvp \
-    --out patched.apk \
-    --exclusive \
-    --force \
-    --ei 6 \
-    --ei 39 \
-    app.apk
-
-adb install -r patched.apk
-```
+Open `patches/build/libs/patches-*.mpp` in Morphe Desktop and select the target APK and patches to apply.
 
 ## Emulation
 
@@ -119,7 +89,7 @@ To install the application, run it and see the logs on a device connected via US
 adb install -r patched.apk
 
 # View logs
-adb logcat | grep ReVanced
+adb logcat | grep Mubelotix
 ```
 
 ## React Native REPL
@@ -142,16 +112,15 @@ This patch injects a REPL into React Native applications, allowing you to run Ja
     ```
 
 3.  **Build and patch:**
-    Build the patches and apply the REPL patch, providing the `ws_server` option with your serveo URL.
+    Build the Morphe bundle, then open it in Morphe Desktop. Select the React Native REPL patch and set its `ws_server` option to the URL from step 1.
 
     ```bash
-    ./gradlew build && jar cf patches.rvp -C patches/build/classes/kotlin/main . -C patches/build/resources/main . && java -jar revanced-cli.jar patch --patches patches.rvp --enable "React Native REPL" --options ws_server=YOUR_SERVEO_URL --out patched.apk target_app.apk
+    ./gradlew buildAndroid
     ```
-    *Replace `YOUR_SERVEO_URL` with the URL from step 1 (without `https://`, e.g., `1b3c552c9b4e82ab.serveousercontent.com`) and `target_app.apk` with your APK path.*
 
 4.  **Install and connect:**
     Install the patched APK. When the app starts, it will connect to your Python server.
 
-    ```bash
-    adb install -r patched.apk
-    ```
+```bash
+adb install -r patched.apk
+```

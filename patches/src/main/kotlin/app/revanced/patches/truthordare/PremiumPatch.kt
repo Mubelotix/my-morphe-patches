@@ -1,6 +1,6 @@
 package app.revanced.patches.truthordare
 
-import app.revanced.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.bytecodePatch
 import app.revanced.util.reactnative.reactNativePatch
 
 @Suppress("unused")
