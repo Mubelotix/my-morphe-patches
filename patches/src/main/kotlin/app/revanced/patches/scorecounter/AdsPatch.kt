@@ -7,8 +7,6 @@ import app.morphe.patcher.fingerprint
 import app.revanced.util.returnEarlyString
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.AccessFlags
-import app.revanced.patches.tarotcounter.bannerAdUnitFingerprint
-import app.revanced.patches.tarotcounter.openAdUnitFingerprint
 
 @Suppress("unused")
 val adsPatch = resourcePatch(

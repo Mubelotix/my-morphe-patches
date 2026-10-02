@@ -21,7 +21,7 @@ Use the Morphe Manager source link:
 
 <https://morphe.software/add-source?github=Mubelotix/my-morphe-patches>
 
-Releases publish Morphe patch bundles (`.mpp`) and source metadata. For local development, build with `./gradlew buildAndroid`; the bundle is written to `patches/build/libs/` and can be applied using [Morphe Desktop](https://github.com/MorpheApp/morphe-desktop).
+Releases publish Morphe patch bundles (`.mpp`) and source metadata. For local development, build with `./gradlew buildAndroid`; the bundle is written to `patches/build/libs/`. Apply it with [Morphe Desktop](https://github.com/MorpheApp/morphe-desktop), either in its UI or through the CLI in the release's `*-all.jar` (see [CONTRIBUTING.md](CONTRIBUTING.md)).
 
 ## Development
 

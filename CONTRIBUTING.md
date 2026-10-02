@@ -70,7 +70,38 @@ The goal is that someone (including future you) can pick up `notes.md` and under
 
 ### Running
 
-Open `patches/build/libs/patches-*.mpp` in Morphe Desktop and select the target APK and patches to apply.
+Download the latest all-in-one JAR from the [Morphe Desktop releases](https://github.com/MorpheApp/morphe-desktop/releases). It includes the Morphe CLI:
+
+```bash
+java -jar morphe-desktop-<version>-all.jar patch \
+  --patches patches/build/libs/patches-<version>.mpp \
+  --enable "Remove ads" \
+  app.apk \
+  --out patched.apk
+```
+
+Pass `--patches` more than once to combine bundles. For example, to clone an app so it can be installed alongside the original, include the official Morphe patches bundle and configure its **Clone app** patch:
+
+```bash
+java -jar morphe-desktop-<version>-all.jar options-create \
+  --patches patches/build/libs/patches-<version>.mpp \
+  --patches https://github.com/MorpheApp/morphe-patches \
+  --filter-package-name net.aasuited.tarotscore \
+  --out tarot-options.json
+```
+
+In `tarot-options.json`, enable **Clone app** and set its `packageName` to a unique ID (for example, `net.aasuited.tarotscore.morphetest`). Then apply both bundles with `--options-file tarot-options.json`:
+
+```bash
+java -jar morphe-desktop-<version>-all.jar patch \
+  --patches patches/build/libs/patches-<version>.mpp \
+  --patches https://github.com/MorpheApp/morphe-patches \
+  --options-file tarot-options.json \
+  app.apk \
+  --out patched-clone.apk
+```
+
+Split downloads such as XAPK/APKM/APKS must be merged into an APK first; see [Merge split APKs](#merge-split-apks). Morphe Desktop's graphical interface can also apply the bundles and options.
 
 ## Emulation
 
@@ -112,7 +143,7 @@ This patch injects a REPL into React Native applications, allowing you to run Ja
     ```
 
 3.  **Build and patch:**
-    Build the Morphe bundle, then open it in Morphe Desktop. Select the React Native REPL patch and set its `ws_server` option to the URL from step 1.
+    Build the Morphe bundle, create an options file, enable the React Native REPL patch, and set its `ws_server` option to the URL from step 1. Apply the bundle with the CLI as described in [Running](#running).
 
     ```bash
     ./gradlew buildAndroid
