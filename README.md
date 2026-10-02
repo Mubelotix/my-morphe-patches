@@ -4,15 +4,15 @@ Custom Android app patches by Mubelotix, built for [Morphe](https://morphe.softw
 
 ## Supported apps
 
-- [Reddit](https://play.google.com/store/apps/details?id=com.reddit.frontpage) — route Reddit through the [Reddit-to-Lemmy compatibility layer](https://github.com/Mubelotix/reddit-to-lemmy).
-- [Jakdojade](https://play.google.com/store/apps/details?id=com.citynav.jakdojade.pl.android) — remove ads and enable premium features.
-- [French Tarot Score Counter](https://play.google.com/store/apps/details?id=net.aasuited.tarotscore) — remove ads.
-- [Score Counter](https://play.google.com/store/apps/details?id=net.aasuited.universalscoretracker) — remove ads.
-- [Picolo](https://play.google.com/store/apps/details?id=com.picolo.android) — enable premium features.
-- [Truth or Dare](https://play.google.com/store/apps/details?id=com.antoinehabert.truthordaregame) — enable premium features.
-- [Sudoku.com](https://play.google.com/store/apps/details?id=com.easybrain.sudoku.android) — remove ads.
-- [MyAstuce](https://play.google.com/store/apps/details?id=fr.cityway.android.creaastuce) — allow ticket validation while offline.
-- [Pinterest](https://play.google.com/store/apps/details?id=com.pinterest) — remove ads and promoted content.
+- [Reddit](https://play.google.com/store/apps/details?id=com.reddit.frontpage) — The official Reddit app turned into a Lemmy client. Also see the [compatibility layer](https://github.com/Mubelotix/reddit-to-lemmy).
+- [Jakdojade](https://play.google.com/store/apps/details?id=com.citynav.jakdojade.pl.android) — A public transport app for Poland. Patched to remove ads.
+- [French Tarot Score Counter](https://play.google.com/store/apps/details?id=net.aasuited.tarotscore) — A point counter for the French Tarot card game. Patched to remove ads.
+- [Score Counter](https://play.google.com/store/apps/details?id=net.aasuited.universalscoretracker) — A simple point counter for any game. Patched to remove ads.
+- [Picolo](https://play.google.com/store/apps/details?id=com.picolo.android&hl=en_US) — The drinking game patched to activate premium features for free.
+- [Truth or Dare](https://play.google.com/store/apps/details?id=com.antoinehabert.truthordaregame) — The party game patched to activate premium features.
+- [Sudoku.com](https://play.google.com/store/apps/details?id=com.easybrain.sudoku.android&hl=en_US) — Sudokus without ads.
+- [MyAstuce](https://play.google.com/store/apps/details?id=fr.cityway.android.creaastuce) — Public transit app for Rouen. Patched to allow ticket validation without an internet connection, for users who travel in areas with poor network coverage.
+- [Pinterest](https://play.google.com/store/apps/details?id=com.pinterest) — Remove ads and promoted content.
 - [Spotify](https://play.google.com/store/apps/details?id=com.spotify.music) — experimental patching and instrumentation.
 
 ## Add the patches to Morphe
