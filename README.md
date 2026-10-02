@@ -19,7 +19,7 @@ Custom Android app patches by Mubelotix, built for [Morphe](https://morphe.softw
 
 Use the Morphe Manager source link:
 
-<https://morphe.software/add-source?github=Mubelotix/my-revanced-patches>
+<https://morphe.software/add-source?github=Mubelotix/my-morphe-patches>
 
 Releases publish Morphe patch bundles (`.mpp`) and source metadata. For local development, build with `./gradlew buildAndroid`; the bundle is written to `patches/build/libs/` and can be applied using [Morphe Desktop](https://github.com/MorpheApp/morphe-desktop).
 

@@ -2,14 +2,14 @@
 
 ### 🐛 Bug Fixes
 
-* **ci:** prevent daily release from triggering itself in a loop [skip ci] ([5852893](https://github.com/Mubelotix/my-revanced-patches/commit/5852893d4b8a42b8dc699cbc0f25043ad1f42dae))
-* Compile DEX without debugging information ([73f6506](https://github.com/Mubelotix/my-revanced-patches/commit/73f6506bccc01e5622a6e19bedcf6d54d3f701c7))
-* Upload asset signature by fixing asset path glob pattern ([1378304](https://github.com/Mubelotix/my-revanced-patches/commit/1378304809092e1f5a5c8fb4beb0964496222059))
+* **ci:** prevent daily release from triggering itself in a loop [skip ci] ([5852893](https://github.com/Mubelotix/my-morphe-patches/commit/5852893d4b8a42b8dc699cbc0f25043ad1f42dae))
+* Compile DEX without debugging information ([73f6506](https://github.com/Mubelotix/my-morphe-patches/commit/73f6506bccc01e5622a6e19bedcf6d54d3f701c7))
+* Upload asset signature by fixing asset path glob pattern ([1378304](https://github.com/Mubelotix/my-morphe-patches/commit/1378304809092e1f5a5c8fb4beb0964496222059))
 
 ### ✨ New Features
 
-* Init ([66be625](https://github.com/Mubelotix/my-revanced-patches/commit/66be625f25ee2d678dac62a5bf4daa631284f8f6))
-* migrate patches to Morphe ([0aa49df](https://github.com/Mubelotix/my-revanced-patches/commit/0aa49dfd53198f9ae68c7421a5bbf28557fb57e0))
+* Init ([66be625](https://github.com/Mubelotix/my-morphe-patches/commit/66be625f25ee2d678dac62a5bf4daa631284f8f6))
+* migrate patches to Morphe ([0aa49df](https://github.com/Mubelotix/my-morphe-patches/commit/0aa49dfd53198f9ae68c7421a5bbf28557fb57e0))
 
 # Changelog
 
