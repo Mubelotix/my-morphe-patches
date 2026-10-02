@@ -1,3 +1,9 @@
+## [1.0.1](https://github.com/Mubelotix/my-morphe-patches/compare/v1.0.0...v1.0.1) (2026-10-02)
+
+### 🐛 Bug Fixes
+
+* patch Tarot Score Counter 3.12.4 ([2e967a6](https://github.com/Mubelotix/my-morphe-patches/commit/2e967a6e18314eb22cdfd8b4be2cb45e5a8842a1))
+
 ## 1.0.0 (2026-10-02)
 
 ### 🐛 Bug Fixes
